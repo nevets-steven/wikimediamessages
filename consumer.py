@@ -6,7 +6,8 @@ KAFKA_TOPIC = os.environ.get("KAFKA_TOPIC", 'latest_events')
 KAFKA_API_VERSION = os.environ.get('KAFKA_API_VERSION', '7.3.1')
 
 consumer = KafkaConsumer(
-    bootstrap_server=KAFKA_BOOTSTRAP_SERVERS,
+    KAFKA_TOPIC,
+    bootstrap_servers=[KAFKA_BOOTSTRAP_SERVERS],
     api_version=KAFKA_API_VERSION,
     auto_offset_reset='earliest',
     enable_auto_commit=True,
